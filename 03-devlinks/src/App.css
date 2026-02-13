@@ -1,4 +1,26 @@
-:root{
-  --bg-url:url(:\Users\47326599858\Pictures\dark.jpg)
+:root {
+  --bg-url: url(./assets/brancao.jpg);
+  --text-color: #000;
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.1);
+  --surface-color-hover: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sol.svg);
+  --highlight-color: rgba(0, 0, 0, 0.2);
 }
 
+#App {
+  height: 100vh;
+  background-image: var(--bg-url);
+  background-repeat: no-repeat;
+  background-position: top center;
+  object-fit: cover;
+  color: var(--text-color);
+}
+
+ul{
+  list-style: nome;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
