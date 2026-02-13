@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./link.module.css";
 
 const Link = ({ url, children}) => {
   return (
