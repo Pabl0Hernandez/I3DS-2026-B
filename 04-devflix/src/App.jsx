@@ -1,5 +1,5 @@
 import "./App.css";
-
+import Rodape from "./assets/components/Rodape/Rodape";
 import logo from "./assets/devflix.png";
 import lupa from "./assets/search.svg";
 
@@ -17,8 +17,8 @@ const App = () => {
 
         <img src={lupa} alt="Botão de ação para pesquisa!" />
       </div>
-      
-      <Rodape>Pablo Hernandez シ</Rodape>
+
+      <Rodape link={"https://github.com/Pabl0Hernandez"}>PabloHernandez</Rodape>
     </div>
   );
 };
