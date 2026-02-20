@@ -10,6 +10,8 @@
 
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
+  /* Modificando o primeiro item "div" do elemento .movie */
+  /* ano */
   & div:nth-of-type(1) {
     position: absolute;
     z-index: 3;
@@ -22,10 +24,11 @@
     opacity: 0;
     padding: 10px 0;
 
-    background-color: var(--bg-secondary);
+    background: var(--bg-secondary);
   }
 
   /* Modificando o segundo item "div" do elemento .movie */
+  /* imagem */
   & div:nth-of-type(2) {
     height: 100%;
     width: 100%;
@@ -37,6 +40,7 @@
   }
 
   /* Modificando o terceiro item "div" do elemento .movie */
+  /* Titulo */
   & div:nth-of-type(3) {
     z-index: 2;
     position: absolute;
@@ -63,11 +67,6 @@
     }
   }
 
-  /* Esconder o ano */
-  & div:nth-of-type(1) {
-    opacity: 0;
-  }
-
   /* Estado ao passar o mouse por cima do bloco "MovieCard" */
   &:hover {
     box-shadow: 0 30px 18px -8px rgba(0, 0, 0, 0.4);
@@ -78,11 +77,11 @@
     }
 
     & div:nth-of-type(2) {
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
     & div:nth-of-type(3) {
-      background-color: transparent;
+      /* background-color: transparent; */
     }
   }
 }
