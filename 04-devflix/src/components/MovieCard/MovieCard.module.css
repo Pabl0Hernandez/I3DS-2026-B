@@ -15,12 +15,14 @@
     z-index: 3;
     width: 100%;
     top: 0;
-    color: var(--text-secondary);
+    color: var(--accent-color);
     font-weight: bold;
     text-align: center;
     transition: opacity 0.3s ease;
     opacity: 0;
-    padding: 16px;
+    padding: 10px 0;
+
+    background-color: var(--bg-secondary);
   }
 
   /* Modificando o segundo item "div" do elemento .movie */
@@ -31,6 +33,33 @@
     & img {
       height: 100%;
       width: 100%;
+    }
+  }
+
+  /* Modificando o terceiro item "div" do elemento .movie */
+  & div:nth-of-type(3) {
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px 24px;
+    background: var(--bg-secondary);
+
+    transition: all 0.3s ease;
+
+    & span {
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: var(--text-secondary);
+    }
+
+    & h3 {
+      margin-top: 5px;
+      color: var(--accent-color);
+      transition: color 0.3s ease;
     }
   }
 
@@ -49,7 +78,7 @@
     }
 
     & div:nth-of-type(2) {
-      opacity: 0.3;
+      opacity: 0.8;
     }
 
     & div:nth-of-type(3) {
