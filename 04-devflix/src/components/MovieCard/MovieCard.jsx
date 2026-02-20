@@ -3,9 +3,11 @@ import styles from "./MovieCard.module.css";
 const MovieCard = (props) => {
   return (
     <>
-      <div className={styles.movie}></div>
-      <p>{props.Year}</p>
-      <div>
+      <div className={styles.movie}>
+        <div>
+          <p>{props.Year}</p>
+        </div>
+
         <div>
           <img src={props.Poster} alt={props.Title} />
         </div>
