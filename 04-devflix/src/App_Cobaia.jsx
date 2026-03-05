@@ -1,13 +1,14 @@
-import "./App.css";
 import { useState } from "react";
-import Rodape from "./assets/components/Rodape/Rodape";
+import "./App.css";
+
 import logo from "./assets/devflix.png";
 import lupa from "./assets/search.svg";
+import Rodape from "./components/Rodape/Rodape";
 
 const App = () => {
   const [filmes] = useState([
     {
-      id: 1,
+      id: 1245,
       titulo: "Série JavaScript",
       sinopse: "Aprenda JavaScript do zero",
       genero: "Educação",
@@ -15,7 +16,7 @@ const App = () => {
       imagem: "",
     },
     {
-      id: 2,
+      id: 21231,
       titulo: "React Avançado",
       sinopse: "Domine React em produção",
       genero: "Educação",
@@ -23,7 +24,7 @@ const App = () => {
       imagem: "",
     },
     {
-      id: 3,
+      id: 39854,
       titulo: "Web Design Moderno",
       sinopse: "Crie interfaces incríveis",
       genero: "Design",
@@ -37,12 +38,11 @@ const App = () => {
       <img
         id="Logo"
         src={logo}
-        alt="Logo do serviço de streaming DEVFLIX em destaque com cores vermelha e preta, representando uma plataforma de streaming de filmes e séries."
+        alt="Logotipo do serviço de streaming Devflix, com letras vermelhas e fundo preto, promovendo conteúdo de séries, filmes e entretenimento online."
       />
 
       <div className="search">
-        <input type="text" placeholder="Pesquise por Filmes e Series..." />
-
+        <input type="text" placeholder="Pesquise por filmes" />
         <img src={lupa} alt="Botão de ação para pesquisa!" />
       </div>
 
@@ -58,7 +58,7 @@ const App = () => {
         ))}
       </>
 
-      <Rodape link={"https://github.com/Pabl0Hernandez"}> PabloHernandez シ </Rodape>
+      <Rodape link={"https://github.com/Pabl0Hernandez"}>Pablo Hernandez ッ</Rodape>
     </div>
   );
 };

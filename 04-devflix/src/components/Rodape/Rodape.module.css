@@ -2,7 +2,7 @@ footer {
   text-align: center;
   font-size: 14px;
   padding-top: 24px;
-  color: var(--text-color);
+  color: var(--text-primary);
 
   & a {
     text-decoration: none;

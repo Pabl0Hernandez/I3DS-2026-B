@@ -25,7 +25,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    searchMovies(""); // Termo para pesquisa au carregar o site
+    searchMovies(""); // termo para pesquina ao carregar o site
   }, []);
 
   return (
@@ -43,7 +43,6 @@ const App = () => {
           type="text"
           placeholder="Pesquise por filmes"
         />
-
         <img
           onClick={() => searchMovies(search)}
           src={lupa}
@@ -54,16 +53,14 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
-            <MovieCard key={index} {...movie} apiUrl={apiUrl}/>
+            <MovieCard key={index} {...movie} apiUrl={apiUrl} />
           ))}
         </div>
       ) : (
-        <h2 className="empty">😔 Filme não encontrado 😔</h2>
+        <h2 className="empty">😢 Filme não encontrado 😢</h2>
       )}
 
-      <Rodape link={"https://github.com/Pabl0Hernandez"}>
-        Pablo Hernandez シ
-      </Rodape>
+      <Rodape link={"https://github.com/Pabl0Hernandez"}>Pablo Hernandez</Rodape>
     </div>
   );
 };

@@ -5,7 +5,10 @@ const Rodape = ({ children, link }) => {
   return (
     <footer>
       <p>
-        Feito com 🤍 por <a href={link} target="_black">{children}</a>
+        Feito com 🤍 por{" "}
+        <a href={link} target="_blank">
+          {children}
+        </a>
       </p>
     </footer>
   );
