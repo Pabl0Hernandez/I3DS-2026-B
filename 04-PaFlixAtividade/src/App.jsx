@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-import logo from "./assets/devflix.png";
+import logo from "./assets/PHFLIX.png";
 import lupa from "./assets/search.svg";
 
 import Rodape from "./components/Rodape/Rodape";
@@ -19,6 +19,7 @@ const App = () => {
   const searchMovies = async (title) => {
     const response = await fetch(`${apiUrl}&s=${title}`);
     const data = await response.json();
+    
 
     //Alimentando a variavel movies
     setMovies(data.Search);
@@ -43,7 +44,7 @@ const App = () => {
           onKeyDown={(e) => e.key === "Enter" && searchMovies(search)}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          placeholder="Pesquise por filmes"
+          placeholder="Pesquise por filmes e series!"
         />
         <img
           onClick={() => searchMovies(search)}
@@ -59,10 +60,10 @@ const App = () => {
           ))}
         </div>
       ) : (
-        <h2 className="empty">😢 Filme não encontrado 😢</h2>
+        <h2 className="empty">😢 Filme não encontrado pamonha! 😂</h2>
       )}
 
-      <Rodape link={"https://github.com/Pabl0Hernandez"}>Pablo Hernandez</Rodape>
+      <Rodape link={"https://github.com/Pabl0Hernandez"}>Pablo Hernandez ツ</Rodape>
     </div>
   );
 };

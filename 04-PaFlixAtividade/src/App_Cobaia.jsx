@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-import logo from "./assets/devflix.png";
+import logo from "./assets/PHFLIX.png";
 import lupa from "./assets/search.svg";
 import Rodape from "./components/Rodape/Rodape";
 
@@ -47,7 +47,7 @@ const App = () => {
       </div>
 
       <>
-        {filmes.map((filme, index) => (
+        {filmes.map((filme, index,) => (
           <div key={index}>
             <h2>{filme.titulo}</h2>
             <h3>{filme.duracao}</h3>

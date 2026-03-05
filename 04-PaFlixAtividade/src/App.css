@@ -1,39 +1,36 @@
 :root {
-  /* :root -> variáveis de css no tema original projetado */
+  /* Fonte */
   --font-raleway: "Raleway", sans-serif;
 
   /* Light theme (padrão) */
-  --bg-primary: #f5f5f5;
-  --bg-secondary: #fff;
-  --text-primary: #333;
-  --text-secondary: #666;
-  --text-placeholder: #a1a1a1;
-  --accent-color: #ff6b6b;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --shadow: 0px 2px 8px var(--shadow-color);
+  --bg-primary: #f0f8ff;        /* azul clarinho */
+  --bg-secondary: #ffffff;      /* branco puro */
+  --text-primary: #1a1a1a;      /* preto suave */
+  --text-secondary: #4d4d4d;    /* cinza médio */
+  --text-placeholder: #b0b0b0;  /* cinza claro */
+  --accent-color: #ff6f91;      /* rosa vibrante */
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --shadow: 0px 2px 10px var(--shadow-color);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark theme */
-    --bg-primary: #212426;
-    --bg-secondary: #343739;
-    --text-primary: #f5f5f5;
-    --text-secondary: #f0f0f0;
-    --text-placeholder: #a1a1a1;
-    --accent-color: #ffa500;
-    --shadow-color: rgba(0, 0, 0, 0.4);
-    --shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+    --bg-primary: #121212;       /* preto profundo */
+    --bg-secondary: #1e1e1e;     /* cinza escuro */
+    --text-primary: #e0e0e0;     /* cinza claro */
+    --text-secondary: #cfcfcf;   /* cinza médio */
+    --text-placeholder: #888888; /* cinza escuro */
+    --accent-color: #00e0ff;     /* azul neon */
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --shadow: 5px 5px 10px #0d0d0d, -5px -5px 10px #1a1a1a;
   }
 }
 
 body {
   font-family: var(--font-raleway);
   background: var(--bg-primary);
-
   color: var(--text-primary);
-
-  /* Efeito de transição */
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
@@ -48,7 +45,7 @@ body {
 }
 
 #Logo {
-  max-width: 100%;
+  max-width: 30%;
   overflow: hidden;
 
   & img {
@@ -69,9 +66,7 @@ body {
   border-radius: 4rem;
   background: var(--bg-secondary);
   box-shadow: var(--shadow);
-
   -webkit-box-shadow: var(--shadow);
-
   transition: all 0.3s ease;
 
   & input {
@@ -101,7 +96,6 @@ body {
   width: 100%;
   margin-top: 2rem;
   text-align: center;
-
   color: var(--accent-color);
 }
 

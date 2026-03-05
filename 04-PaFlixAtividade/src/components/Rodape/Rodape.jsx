@@ -5,7 +5,7 @@ const Rodape = ({ children, link }) => {
   return (
     <footer>
       <p>
-        Feito com 🤍 por{" "}
+        Feito com ❤️ por{" "}
         <a href={link} target="_blank">
           {children}
         </a>
