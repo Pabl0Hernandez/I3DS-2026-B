@@ -25,7 +25,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    searchMovies(""); // termo para pesquina ao carregar o site
+    (async () => {
+      await searchMovies(""); // termo para pesquina ao carregar o site
+    })();
   }, []);
 
   return (
