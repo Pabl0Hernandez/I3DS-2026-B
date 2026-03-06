@@ -11,32 +11,69 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
 
-  //Utilizando uma CHAVE de API do arquivo .env
-  const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-  const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
+  // CONTROLE DO IDIOMA
+  const [language, setLanguage] = useState(localStorage.getItem("language") || "pt");
 
-  //Criando a conexão com a API e trazendo informações
-  const searchMovies = async (title) => {
-    const response = await fetch(`${apiUrl}&s=${title}`);
-    const data = await response.json();
-    
-
-    //Alimentando a variavel movies
-    setMovies(data.Search);
+  const toggleLanguage = () => {
+    setLanguage(language === "pt" ? "en" : "pt");
   };
 
   useEffect(() => {
+  localStorage.setItem("language", language);
+}, [language]);
+
+  // CONTROLE DO TEMA
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"),
+  );
+
+  useEffect(() => {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  // API
+  const apiKey = import.meta.env.VITE_OMDB_API_KEY;
+  const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
+
+  // BUSCAR FILMES
+  const searchMovies = async (title) => {
+    const response = await fetch(`${apiUrl}&s=${title}`);
+    const data = await response.json();
+
+    setMovies(data.Search);
+  };
+
+  // BUSCA INICIAL
+  useEffect(() => {
     (async () => {
-      await searchMovies(""); // termo para pesquina ao carregar o site
+      await searchMovies("");
     })();
   }, []);
 
   return (
     <div id="App">
+      {/* BOTÃO DE IDIOMA */}
+      <button className="langToggle" onClick={toggleLanguage}>
+        {language === "pt" ? "🇺🇸 EN" : "🇧🇷 PT"}
+      </button>
+
+      {/* BOTÃO DE TEMA */}
+      <button className="themeToggle" onClick={toggleTheme}>
+        {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+      </button>
+
       <img
         id="Logo"
         src={logo}
-        alt="Logotipo do serviço de streaming Devflix, com letras vermelhas e fundo preto, promovendo conteúdo de séries, filmes e entretenimento online."
+        alt="Logotipo do serviço de streaming Devflix, com letras vermelhas e fundo preto."
       />
 
       <div className="search">
@@ -44,12 +81,17 @@ const App = () => {
           onKeyDown={(e) => e.key === "Enter" && searchMovies(search)}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          placeholder="Pesquise por filmes e series!"
+          placeholder={
+            language === "pt"
+              ? "Pesquise por filmes e séries!"
+              : "Search for movies and series!"
+          }
         />
+
         <img
           onClick={() => searchMovies(search)}
           src={lupa}
-          alt="Botão de ação para pesquisa!"
+          alt="Search button"
         />
       </div>
 
@@ -60,10 +102,16 @@ const App = () => {
           ))}
         </div>
       ) : (
-        <h2 className="empty">😢 Filme não encontrado pamonha! 😂</h2>
+        <h2 className="empty">
+          {language === "pt"
+            ? "😢 Filme não encontrado pamonha! 🤣"
+            : "😢 Movie not found!"}
+        </h2>
       )}
 
-      <Rodape link={"https://github.com/Pabl0Hernandez"}>Pablo Hernandez ツ</Rodape>
+      <Rodape link={"https://github.com/Pabl0Hernandez"}>
+        Pablo Hernandez ツ
+      </Rodape>
     </div>
   );
 };

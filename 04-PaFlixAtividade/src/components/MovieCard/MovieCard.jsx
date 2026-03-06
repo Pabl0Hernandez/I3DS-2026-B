@@ -4,7 +4,6 @@ import MovieDescription from "../MovieDescription/MovieDescription";
 
 const MovieCard = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // console.log(isModalOpen);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -22,7 +21,15 @@ const MovieCard = (props) => {
         </div>
 
         <div>
-          <span>{props.Type}</span>
+          <span>
+            {props.Type === "movie"
+              ? "Filme"
+              : props.Type === "series"
+                ? "Série"
+                : props.Type === "episode"
+                  ? "Episódio"
+                  : props.Type}
+          </span>
           <h3>{props.Title}</h3>
         </div>
       </div>

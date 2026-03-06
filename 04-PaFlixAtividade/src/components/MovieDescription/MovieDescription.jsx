@@ -4,6 +4,7 @@ import styles from "./MovieDescription.module.css";
 const MovieDescription = (props) => {
   const [movieDesc, setMovieDesc] = useState({});
   const [plotPT, setPlotPT] = useState("");
+  const [language, setLanguage] = useState("pt");
 
   useEffect(() => {
     fetch(`${props.apiUrl}&i=${props.movieID}`)
@@ -11,9 +12,10 @@ const MovieDescription = (props) => {
       .then(async (data) => {
         setMovieDesc(data);
 
-        // traduzindo a sinopse para PT-BR
         const res = await fetch(
-          `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt&dt=t&q=${encodeURIComponent(data.Plot)}`
+          `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt&dt=t&q=${encodeURIComponent(
+            data.Plot
+          )}`
         );
 
         const translated = await res.json();
@@ -22,9 +24,29 @@ const MovieDescription = (props) => {
       .catch((error) => console.error(error));
   }, [props.movieID]);
 
+  const toggleLanguage = () => {
+    setLanguage(language === "pt" ? "en" : "pt");
+  };
+
+  const traduzirTipo = (tipo) => {
+    if (language === "en") return tipo;
+
+    if (tipo === "movie") return "Filme";
+    if (tipo === "series") return "Série";
+    if (tipo === "episode") return "Episódio";
+
+    return tipo;
+  };
+
   return (
     <div className={styles.modalBackdrop} onClick={props.click}>
       <div className={styles.movieModal} onClick={(e) => e.stopPropagation()}>
+
+        {/* BOTÃO DE IDIOMA */}
+        <button className={styles.langBtn} onClick={toggleLanguage}>
+          {language === "pt" ? "🇺🇸 English" : "🇧🇷 Português"}
+        </button>
+
         <div className={styles.movieInfo}>
           <img src={movieDesc.Poster} alt="" />
 
@@ -35,15 +57,19 @@ const MovieDescription = (props) => {
           <div className={styles.movieType}>
             <div>
               <img src="/PH.png" alt="" />
-              {movieDesc.Type}
+
+              <p>{traduzirTipo(movieDesc.Type)}</p>
+
               <h1>{movieDesc.Title}</h1>
 
               <a
-                href={`https://google.com/search?q=${encodeURIComponent(movieDesc.Title + " filme")}`}
+                href={`https://google.com/search?q=${encodeURIComponent(
+                  movieDesc.Title + " filme"
+                )}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                ▶️ Assistir
+                ▶️ {language === "pt" ? "Assistir" : "Watch"}
               </a>
             </div>
           </div>
@@ -51,18 +77,29 @@ const MovieDescription = (props) => {
 
         <div className={styles.containerMisc}>
           <div className={styles.containerFlex}>
-            Avaliação: {movieDesc.imdbRating} | Duração: {movieDesc.Runtime} | {movieDesc.Released}
+            {language === "pt" ? "Avaliação" : "Rating"}: {movieDesc.imdbRating} |
+            {language === "pt" ? "Duração" : "Runtime"}: {movieDesc.Runtime} |
+            {movieDesc.Released}
           </div>
 
           <div className={styles.containerFlex}>
-            <p>Elenco: {movieDesc.Actors}</p>
-            <p>Gênero: {movieDesc.Genre}</p>
+            <p>
+              {language === "pt" ? "Elenco" : "Actors"}: {movieDesc.Actors}
+            </p>
+
+            <p>
+              {language === "pt" ? "Gênero" : "Genre"}: {movieDesc.Genre}
+            </p>
           </div>
         </div>
 
         <div className={styles.desc}>
-          <p>Sinopse: {plotPT}</p>
+          <p>
+            {language === "pt" ? "Sinopse" : "Plot"}:{" "}
+            {language === "pt" ? plotPT : movieDesc.Plot}
+          </p>
         </div>
+
       </div>
     </div>
   );
