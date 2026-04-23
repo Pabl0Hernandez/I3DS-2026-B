@@ -40,34 +40,34 @@ io.on("connection", (Socket) => {
     userName(username, Socket.id);
   });
 
-//===========================
-// EVENTI: Usuario desconecta
-//===========================
-Socket.on("disconnect", (reason)=>{
-  // Registra informaçao sobre desconexao
-  console.log(
-    `Usuario ${Socket.data.username} desconectado! Sua ID era ${Socket.id}`,
-);
-  // Motivo da desconexao. Motivos comuns: "client namespace disconnect", "client left", etc
-console.log(`Motivo: ${reason}`);
-});
-
-//==================================
-// EVENTO: Servidor recebe mensagem
-//==================================
-
-Socket.on("messagem", (texto)=>{
-  // Quando um cliente envia uma mensagem, o servidor:
-  // 1. Cria um objeto com dados da mensagem
-  // 2. Envia para TODOS os clientes conectados usando io.emit()
-  // Isso permite que todos vejam a mensagem em tempo real
-  io.emit("receive_menssage", {
-    text,
-    authorId: Socket.id,
-    author: Socket.data.username,
+  //===========================
+  // EVENTI: Usuario desconecta
+  //===========================
+  Socket.on("disconnect", (reason) => {
+    // Registra informaçao sobre desconexao
+    console.log(
+      `Usuario ${Socket.data.username} desconectado! Sua ID era ${Socket.id}`,
+    );
+    // Motivo da desconexao. Motivos comuns: "client namespace disconnect", "client left", etc
+    console.log(`Motivo: ${reason}`);
   });
-  console.log(`Usuario ${Socket.data.username} enviu uma mensagem!`);
-});
+
+  //==================================
+  // EVENTO: Servidor recebe mensagem
+  //==================================
+
+  Socket.on("message", (text) => {
+    // Quando um cliente envia uma mensagem, o servidor:
+    // 1. Cria um objeto com dados da mensagem
+    // 2. Envia para TODOS os clientes conectados usando io.emit()
+    // Isso permite que todos vejam a mensagem em tempo real
+    io.emit("receive_message", {
+      text,
+      authorId: Socket.id,
+      author: Socket.data.username,
+    });
+    console.log(`Usuario ${Socket.data.username} enviu uma mensagem!`);
+  });
 });
 
 // Registra no console quando um novo usuario se conecta
@@ -76,9 +76,9 @@ const userName = (username, id) => {
 };
 
 //======================
-// INICIAR O SERVIDOR 
+// INICIAR O SERVIDOR
 //=====================
-server.listen(PORT, ()=>{
+server.listen(PORT, () => {
   console.log(`Servidor esta rodando na porta ${PORT}...`);
   console.log(`Cliente deve conectar em http://seu-ip:${PORT}`);
 });
