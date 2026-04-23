@@ -35,9 +35,9 @@ io.on("connection", (Socket) => {
   //=================================
   Socket.on("set_username", (username) => {
     // Armazena o nome de usuario no objeto socket para uso posterior
-    Socket.data.userName = username;
+    Socket.data.username = username;
     // Registra no console que um usuario conectou
-    username(username, Socket.id);
+    userName(username, Socket.id);
   });
 
 //===========================
