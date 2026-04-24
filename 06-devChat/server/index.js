@@ -1,84 +1,82 @@
-// ================================
+// ====================================
 // SERVIDOR DE CHAT EM TEMPO REAL
-// ===============================
-// Este servidor gerencia as conexoes de usuarios e distribui mensagens
+// ====================================
+// Este servidor gerencia as conexões de usuários e distribui mensagens
 // Tecnologias:
 // - Express: Framework web para HTTP
-// - Socket.io: Comunicaçao bidirecional em tempo real via WebSocket
-
-const { Socket } = require("socket.io");
+// - Socket.io: Comunicação bidirecional em tempo real via WebSocket
 
 const app = require("express")(); // Importa a biblioteca Express
-const server = require("http").createServer(app); // Importa modulo HTTP nativo do Node.js (necessário para o Socket.io)
+const server = require("http").createServer(app); // Importa módulo HTTP nativo do Node.js (necessário para o Socket.io)
 const io = require("socket.io")(server, {
   // Importa Socket.io e configura para o servidor HTTP
   // CORS (Cross-Origin Resource Sharing): permite que clientes de outros domínios/IPs se conectem
   // Altere o IP para o IP da máquina onde o servidor está rodando
-  cors: { origin: "http://localhost:3000" },
-  // Ex: "http://localhost:5173" para desenvolvimento local
-  // Ex:"http://seu.ip.aqui:5173" para rede
+  cors: { origin: "*" },
+  // Exemplo: "http://localhost:5173" para desenvolvimento local
+  // Exemplo: "http://seu.ip.aqui:5173" para rede
 });
 
-const PORT = 3001; // Portal na qual o servidor irá escutar conexões
+const PORT = 3001; // Porta na qual o servidor irá escutar conexões
 
-//===============================================
+// =============================================
 // EVENT LISTENER: Quando um cliente se conecta
-//================================================
-io.on("connection", (Socket) => {
-  // "Socket" representa a conexão de um unico cliente
-  // Cada cliente que se conecta recebe um novo objeto "Socket"
-  // socket.id: ID unico do cliente (gerado automaticamente)
+// =============================================
+io.on("connection", (socket) => {
+  // "socket" representa a conexão de um único cliente
+  // Cada cliente que se conecta recebe um novo objeto "socket"
+  // socket.id: ID único do c liente (gerado automaticamente)
   // socket.data: Objeto para armazenar dados do cliente (username, etc)
 
-  //=================================
-  // EVENTO: Usuario define seu nome
-  //=================================
-  Socket.on("set_username", (username) => {
-    // Armazena o nome de usuario no objeto socket para uso posterior
-    Socket.data.username = username;
-    // Registra no console que um usuario conectou
-    userName(username, Socket.id);
+  // ==================================
+  // EVENTO: Usuário define seu nome
+  // ==================================
+  socket.on("set_username", (username) => {
+    // Armazena o nome de usuário no objeto socket para uso posterior
+    socket.data.username = username;
+    // Registra no console que um usuário conectou
+    userName(username, socket.id);
   });
 
-  //===========================
-  // EVENTI: Usuario desconecta
-  //===========================
-  Socket.on("disconnect", (reason) => {
-    // Registra informaçao sobre desconexao
+  // ==================================
+  // EVENTO: Usuário desconecta
+  // ==================================
+  socket.on("disconnect", (reason) => {
+    // Registra informação sobre desconexão
     console.log(
-      `Usuario ${Socket.data.username} desconectado! Sua ID era ${Socket.id}`,
+      `Usuário ${socket.data.username} desconetado! Sua id era ${socket.id}`,
     );
-    // Motivo da desconexao. Motivos comuns: "client namespace disconnect", "client left", etc
+    // Motivo da desconexão. Motivos comuns: "client namespace disconnect", "client left", etc
     console.log(`Motivo: ${reason}`);
   });
 
-  //==================================
+  // ==================================
   // EVENTO: Servidor recebe mensagem
-  //==================================
+  // ==================================
 
-  Socket.on("message", (text) => {
+  socket.on("message", (text) => {
     // Quando um cliente envia uma mensagem, o servidor:
     // 1. Cria um objeto com dados da mensagem
     // 2. Envia para TODOS os clientes conectados usando io.emit()
     // Isso permite que todos vejam a mensagem em tempo real
     io.emit("receive_message", {
       text,
-      authorId: Socket.id,
-      author: Socket.data.username,
+      authorId: socket.id,
+      author: socket.data.username,
     });
-    console.log(`Usuario ${Socket.data.username} enviu uma mensagem!`);
+    console.log(`Usuário ${socket.data.username} enviou uma mensagem!`);
   });
 });
 
-// Registra no console quando um novo usuario se conecta
+// Registra no console quando um novo usuário se conecta
 const userName = (username, id) => {
-  console.log(`Usuario ${username} conenctado com o seguinte id: ${id}`);
+  console.log(`Usuário ${username} conectado com o seguinte id: ${id}`);
 };
 
-//======================
+// ==================================
 // INICIAR O SERVIDOR
-//=====================
+// ==================================
 server.listen(PORT, () => {
-  console.log(`Servidor esta rodando na porta ${PORT}...`);
+  console.log(`Servidor está rodando na porta ${PORT}...`);
   console.log(`Cliente deve conectar em http://seu-ip:${PORT}`);
 });
