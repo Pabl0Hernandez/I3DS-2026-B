@@ -1,0 +1,90 @@
+.pagamento-page{
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+.pagamento-box{
+
+    width: 100%;
+    max-width: 700px;
+
+    background: #1B2E4B;
+
+    padding: 30px;
+
+    border-radius: 10px;
+}
+
+.pagamento-box h1{
+
+    color: white;
+
+    margin-bottom: 20px;
+}
+
+.pagamento-box input{
+
+    width: 100%;
+    height: 45px;
+
+    border: none;
+
+    padding-left: 15px;
+
+    outline: none;
+
+    background: #2D5C89;
+
+    color: white;
+
+    margin-bottom: 20px;
+}
+
+.pagamento-box button{
+
+    width: 100%;
+    height: 45px;
+
+    border: none;
+
+    background: #80B500;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.lista-cartoes{
+
+    margin-top: 30px;
+}
+
+.cartao-item{
+
+    background: #2D5C89;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartao-item h3{
+
+    color: white;
+}
+
+.cartao-item button{
+
+    width: 120px;
+
+    background: #c0392b;
+}

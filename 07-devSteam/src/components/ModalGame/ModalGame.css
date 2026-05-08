@@ -1,0 +1,100 @@
+.modal-overlay{
+
+    width: 100%;
+    height: 100vh;
+
+    background: #000000b7;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 999;
+}
+
+.modal-game{
+
+    width: 100%;
+    max-width: 900px;
+
+    background: #1B2E4B;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-wrap: wrap;
+}
+
+.modal-game img{
+
+    width: 350px;
+
+    object-fit: cover;
+}
+
+.modal-info{
+
+    flex: 1;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.modal-info h2{
+
+    color: white;
+}
+
+.modal-info p{
+
+    color: #d6d6d6;
+
+    line-height: 1.5;
+}
+
+.modal-info span{
+
+    color: white;
+}
+
+.modal-info h3{
+
+    color: #D8FF3E;
+
+    font-size: 28px;
+}
+
+.modal-info button{
+
+    width: 200px;
+    height: 45px;
+
+    border: none;
+
+    background: #80B500;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.modal-info button:hover{
+
+    background: #9ed600;
+}

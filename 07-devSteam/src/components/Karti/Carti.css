@@ -1,0 +1,69 @@
+.carti{
+
+    width: 100%;
+    max-width: 900px;
+
+    background: #2D8CC4;
+
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    transition: 0.3s;
+}
+
+.carti:hover{
+
+    transform: scale(1.01);
+}
+
+.carti img{
+
+    width: 220px;
+    height: 120px;
+
+    object-fit: cover;
+}
+
+.carti-info{
+
+    flex: 1;
+}
+
+.carti-info h3{
+
+    color: white;
+}
+
+.carti-info p{
+
+    color: #d6d6d6;
+
+    margin: 5px 0;
+}
+
+.carti-info h2{
+
+    color: #D8FF3E;
+}
+
+.carti button{
+
+    width: 180px;
+    height: 40px;
+
+    border: none;
+
+    background: #80B500;
+
+    color: white;
+
+    cursor: pointer;
+}

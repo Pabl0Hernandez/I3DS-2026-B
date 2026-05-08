@@ -1,0 +1,82 @@
+.card{
+
+    width: 220px;
+
+    background: #2D8CC4;
+
+    transition: 0.3s;
+
+    overflow: hidden;
+}
+
+.card:hover{
+
+    transform: translateY(-10px);
+
+    box-shadow: 0 0 20px #00000060;
+}
+
+.card img{
+
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+}
+
+.card-info{
+
+    padding: 10px;
+}
+
+.card-info span{
+
+    color: white;
+    font-size: 12px;
+}
+
+.preco{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 10px 0;
+}
+
+.preco button{
+
+    background: #80B500;
+
+    border: none;
+
+    color: white;
+
+    padding: 5px 10px;
+}
+
+.preco h3{
+
+    color: #D8FF3E;
+}
+
+.btn-cart{
+
+    width: 100%;
+    height: 35px;
+
+    border: none;
+
+    background: #80B500;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-cart:hover{
+
+    background: #9ed600;
+}

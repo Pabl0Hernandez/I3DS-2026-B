@@ -1,0 +1,189 @@
+/* Header principal */
+header{
+    width: 100%;
+    min-height: 90px;
+    background: linear-gradient(90deg, #0D1525, #101B2D);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 40px;
+    border-bottom: 2px solid #2D8CC4;
+    box-shadow: 0 0 20px #00000050;
+}
+
+/* Logo */
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.logo img{
+    width: 60px;
+}
+.logo h1{
+    color: white;
+    font-size: 38px;
+}
+
+/* Barra de busca */
+header input{
+    flex: 1;
+    min-width: 250px;
+    max-width: 420px;
+    height: 42px;
+    border: none;
+    outline: none;
+    background: #2D5C89;
+    padding-left: 15px;
+    color: white;
+    border-radius: 4px;
+}
+header input::placeholder{
+    color: #cfcfcf;
+}
+
+/* Área do carrinho */
+.cart-area{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.cart-icon{
+    width: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cart-icon:hover{
+    transform: scale(1.1);
+}
+
+/* Dropdown do carrinho */
+.dropdown{
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 330px;
+    max-width: 90vw;
+    background: #3F5676;
+    padding: 20px;
+    border-radius: 5px;
+    animation: aparecer 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 0 20px #00000050;
+}
+
+/* Itens do carrinho */
+.item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffffff20;
+}
+.item img{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.item h4{
+    color: white;
+    font-size: 14px;
+}
+.item span{
+    color: #D8FF3E;
+    font-weight: bold;
+}
+.quantity{
+    color: #D8FF3E;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Total do carrinho */
+.total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ffffff40;
+    color: white;
+}
+.total h2{
+    color: #D8FF3E;
+}
+
+/* Botão finalizar compra */
+.finish{
+    width: 100%;
+    height: 42px;
+    margin-top: 20px;
+    border: none;
+    background: #80B500;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.finish:hover{
+    background: #9ed600;
+    transform: scale(1.02);
+}
+
+/* Botão remover item do carrinho */
+.remove-btn{
+    margin-top: 8px;
+    width: 90px;
+    height: 28px;
+    border: none;
+    background: #c0392b;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.remove-btn:hover{
+    background: #e74c3c;
+}
+
+/* Animação do dropdown */
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* NOVO: Usuário logado no topo */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    margin-left: 20px;
+}
+.user-info span {
+    font-weight: bold;
+}
+.user-info button {
+    background: #80b500;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
+.user-info button:hover {
+    background: #9ed600;
+}
